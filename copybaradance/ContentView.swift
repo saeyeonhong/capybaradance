@@ -2,60 +2,64 @@
 //  ContentView.swift
 //  copybaradance
 //
-//  Created by Saeyeon Hong on 2/20/26.
-//
 
 import SwiftUI
-import SwiftData
+internal import Combine
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @State private var frameIndex = 0
+
+    let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
+
+    let capybaraFrames: [String] = [
+        // Frame 0: Neutral stance
+        "   ___\n  /o o\\\n (  -  )\n (     )\n   | |\n  /   \\",
+        // Frame 1: Arms raised
+        " \\  ___  /\n   /o o\\\n  (  -  )\n  (     )\n    | |\n    | |",
+        // Frame 2: Lean left
+        "  ___\n /o o\\\n(  -  )\n(     )\n  | |\n /   ",
+        // Frame 3: Lean right
+        "     ___\n    /o o\\\n   (  -  )\n   (     )\n     | |\n        \\",
+        // Frame 4: Happy face
+        "   ___\n  /^ ^\\\n (  w  )\n (     )\n   | |\n  /   \\",
+    ]
+
+    let notes = ["♩", "♪", "♫", "♬", "♩", "♪", "♫", "♬"]
+    let noteColors: [Color] = [.yellow, .orange, .pink, .purple, .blue, .cyan, .green, .mint]
 
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+        ZStack {
+            Color(red: 0.05, green: 0.05, blue: 0.12)
+                .ignoresSafeArea()
+
+            VStack(spacing: 24) {
+                Text("Capybara Dance Party")
+                    .font(.title2.bold())
+                    .foregroundStyle(.yellow)
+
+                Text(capybaraFrames[frameIndex])
+                    .font(.system(size: 24, weight: .regular, design: .monospaced))
+                    .foregroundStyle(.green)
+                    .multilineTextAlignment(.center)
+                    .frame(width: 240, height: 150, alignment: .center)
+
+                HStack(spacing: 10) {
+                    ForEach(notes.indices, id: \.self) { i in
+                        Text(notes[i])
+                            .font(.title2)
+                            .foregroundStyle(noteColors[i % noteColors.count])
+                            .offset(y: (frameIndex + i) % 2 == 0 ? -6 : 6)
+                            .animation(.easeInOut(duration: 0.4), value: frameIndex)
                     }
                 }
-                .onDelete(perform: deleteItems)
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-        } detail: {
-            Text("Select an item")
         }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
+        .onReceive(timer) { _ in
+            frameIndex = (frameIndex + 1) % capybaraFrames.count
         }
     }
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }

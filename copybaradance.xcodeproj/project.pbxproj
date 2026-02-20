@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1425C83F2F489EE000C07F79 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1425C83E2F489EE000C07F79 /* WidgetKit.framework */; };
+		1425C8412F489EE000C07F79 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1425C8402F489EE000C07F79 /* SwiftUI.framework */; };
+		1425C8502F489EE300C07F79 /* CapybaraDanceWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1425C83C2F489EE000C07F79 /* CapybaraDanceWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		1425C81C2F48960000C07F79 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -21,13 +27,47 @@
 			remoteGlobalIDString = 1425C80B2F4895FE00C07F79;
 			remoteInfo = copybaradance;
 		};
+		1425C84E2F489EE300C07F79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1425C8042F4895FE00C07F79 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1425C83B2F489EE000C07F79;
+			remoteInfo = CapybaraDanceWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1425C8552F489EE300C07F79 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1425C8502F489EE300C07F79 /* CapybaraDanceWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1425C80C2F4895FE00C07F79 /* copybaradance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = copybaradance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1425C81B2F48960000C07F79 /* copybaradanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = copybaradanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1425C8252F48960000C07F79 /* copybaradanceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = copybaradanceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1425C83C2F489EE000C07F79 /* CapybaraDanceWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CapybaraDanceWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		1425C83E2F489EE000C07F79 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		1425C8402F489EE000C07F79 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		1425C8512F489EE300C07F79 /* Exceptions for "CapybaraDanceWidget" folder in "CapybaraDanceWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 1425C83B2F489EE000C07F79 /* CapybaraDanceWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		1425C80E2F4895FE00C07F79 /* copybaradance */ = {
@@ -43,6 +83,14 @@
 		1425C8282F48960000C07F79 /* copybaradanceUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = copybaradanceUITests;
+			sourceTree = "<group>";
+		};
+		1425C8422F489EE000C07F79 /* CapybaraDanceWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				1425C8512F489EE300C07F79 /* Exceptions for "CapybaraDanceWidget" folder in "CapybaraDanceWidgetExtension" target */,
+			);
+			path = CapybaraDanceWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -69,6 +117,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1425C8392F489EE000C07F79 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1425C8412F489EE000C07F79 /* SwiftUI.framework in Frameworks */,
+				1425C83F2F489EE000C07F79 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -78,6 +135,8 @@
 				1425C80E2F4895FE00C07F79 /* copybaradance */,
 				1425C81E2F48960000C07F79 /* copybaradanceTests */,
 				1425C8282F48960000C07F79 /* copybaradanceUITests */,
+				1425C8422F489EE000C07F79 /* CapybaraDanceWidget */,
+				1425C83D2F489EE000C07F79 /* Frameworks */,
 				1425C80D2F4895FE00C07F79 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,8 +147,18 @@
 				1425C80C2F4895FE00C07F79 /* copybaradance.app */,
 				1425C81B2F48960000C07F79 /* copybaradanceTests.xctest */,
 				1425C8252F48960000C07F79 /* copybaradanceUITests.xctest */,
+				1425C83C2F489EE000C07F79 /* CapybaraDanceWidgetExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1425C83D2F489EE000C07F79 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1425C83E2F489EE000C07F79 /* WidgetKit.framework */,
+				1425C8402F489EE000C07F79 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,10 +171,12 @@
 				1425C8082F4895FE00C07F79 /* Sources */,
 				1425C8092F4895FE00C07F79 /* Frameworks */,
 				1425C80A2F4895FE00C07F79 /* Resources */,
+				1425C8552F489EE300C07F79 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1425C84F2F489EE300C07F79 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				1425C80E2F4895FE00C07F79 /* copybaradance */,
@@ -163,6 +234,28 @@
 			productReference = 1425C8252F48960000C07F79 /* copybaradanceUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		1425C83B2F489EE000C07F79 /* CapybaraDanceWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1425C8522F489EE300C07F79 /* Build configuration list for PBXNativeTarget "CapybaraDanceWidgetExtension" */;
+			buildPhases = (
+				1425C8382F489EE000C07F79 /* Sources */,
+				1425C8392F489EE000C07F79 /* Frameworks */,
+				1425C83A2F489EE000C07F79 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				1425C8422F489EE000C07F79 /* CapybaraDanceWidget */,
+			);
+			name = CapybaraDanceWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = CapybaraDanceWidgetExtension;
+			productReference = 1425C83C2F489EE000C07F79 /* CapybaraDanceWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -184,6 +277,9 @@
 						CreatedOnToolsVersion = 26.2;
 						TestTargetID = 1425C80B2F4895FE00C07F79;
 					};
+					1425C83B2F489EE000C07F79 = {
+						CreatedOnToolsVersion = 26.2;
+					};
 				};
 			};
 			buildConfigurationList = 1425C8072F4895FE00C07F79 /* Build configuration list for PBXProject "copybaradance" */;
@@ -203,6 +299,7 @@
 				1425C80B2F4895FE00C07F79 /* copybaradance */,
 				1425C81A2F48960000C07F79 /* copybaradanceTests */,
 				1425C8242F48960000C07F79 /* copybaradanceUITests */,
+				1425C83B2F489EE000C07F79 /* CapybaraDanceWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -223,6 +320,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1425C8232F48960000C07F79 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1425C83A2F489EE000C07F79 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -253,6 +357,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1425C8382F489EE000C07F79 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -265,6 +376,11 @@
 			isa = PBXTargetDependency;
 			target = 1425C80B2F4895FE00C07F79 /* copybaradance */;
 			targetProxy = 1425C8262F48960000C07F79 /* PBXContainerItemProxy */;
+		};
+		1425C84F2F489EE300C07F79 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1425C83B2F489EE000C07F79 /* CapybaraDanceWidgetExtension */;
+			targetProxy = 1425C84E2F489EE300C07F79 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -530,6 +646,64 @@
 			};
 			name = Release;
 		};
+		1425C8532F489EE300C07F79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CapybaraDanceWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CapybaraDanceWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = saeyeon.copybaradance.CapybaraDanceWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1425C8542F489EE300C07F79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CapybaraDanceWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CapybaraDanceWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = saeyeon.copybaradance.CapybaraDanceWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -565,6 +739,15 @@
 			buildConfigurations = (
 				1425C8362F48960000C07F79 /* Debug */,
 				1425C8372F48960000C07F79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1425C8522F489EE300C07F79 /* Build configuration list for PBXNativeTarget "CapybaraDanceWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1425C8532F489EE300C07F79 /* Debug */,
+				1425C8542F489EE300C07F79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

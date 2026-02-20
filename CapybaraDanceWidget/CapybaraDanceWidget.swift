@@ -8,28 +8,11 @@
 import WidgetKit
 import SwiftUI
 
-// MARK: - Animation Frames
-
-private let capybaraFrames: [String] = [
-    // Frame 0: Neutral stance
-    "   ___\n  /o o\\\n (  -  )\n (     )\n   | |\n  /   \\",
-    // Frame 1: Arms raised
-    " \\  ___  /\n   /o o\\\n  (  -  )\n  (     )\n    | |\n    | |",
-    // Frame 2: Lean left
-    "  ___\n /o o\\\n(  -  )\n(     )\n  | |\n /   ",
-    // Frame 3: Lean right
-    "     ___\n    /o o\\\n   (  -  )\n   (     )\n     | |\n        \\",
-    // Frame 4: Happy face
-    "   ___\n  /^ ^\\\n (  w  )\n (     )\n   | |\n  /   \\",
-]
-
 // MARK: - Timeline Entry
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let frameIndex: Int
-
-    var frame: String { capybaraFrames[frameIndex] }
 }
 
 // MARK: - Provider
@@ -46,13 +29,12 @@ struct Provider: TimelineProvider {
     func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
         var entries: [SimpleEntry] = []
         let startDate = Date()
-        let frameInterval: TimeInterval = 1.0
-        // 5 minutes of animation, then auto-reload
-        let count = 300
+        let frameInterval: TimeInterval = 0.3
+        let count = 300 // ~90 seconds of animation, then reload
 
         for i in 0..<count {
             let entryDate = startDate.addingTimeInterval(Double(i) * frameInterval)
-            entries.append(SimpleEntry(date: entryDate, frameIndex: i % capybaraFrames.count))
+            entries.append(SimpleEntry(date: entryDate, frameIndex: i % 5))
         }
 
         let reloadDate = startDate.addingTimeInterval(Double(count) * frameInterval)
@@ -66,29 +48,24 @@ struct CapybaraDanceWidgetEntryView: View {
     var entry: Provider.Entry
     @Environment(\.widgetFamily) var family
 
-    var fontSize: CGFloat {
-        family == .systemSmall ? 9 : 13
+    var imageSize: CGFloat {
+        family == .systemSmall ? 80 : 120
     }
 
     var body: some View {
         ZStack {
-            Color.black
+            Color.white
 
-            VStack(spacing: 4) {
-                Text("Capybara")
+            VStack(spacing: 6) {
+                Image("capybara\(entry.frameIndex + 1)")
+                    .interpolation(.none)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: imageSize, height: imageSize)
+
+                Text("♡ capybara ♡")
                     .font(.caption2.bold())
-                    .foregroundStyle(.yellow)
-
-                Text(entry.frame)
-                    .font(.system(size: fontSize, weight: .regular, design: .monospaced))
-                    .foregroundStyle(.green)
-                    .multilineTextAlignment(.center)
-
-                if family != .systemSmall {
-                    Text("is dancing! 🎵")
-                        .font(.caption2)
-                        .foregroundStyle(.orange)
-                }
+                    .foregroundStyle(.black)
             }
             .padding(6)
         }
@@ -103,7 +80,7 @@ struct CapybaraDanceWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             CapybaraDanceWidgetEntryView(entry: entry)
-                .containerBackground(.black, for: .widget)
+                .containerBackground(Color.white, for: .widget)
         }
         .configurationDisplayName("Capybara Dance")
         .description("Watch a capybara groove on your home screen!")

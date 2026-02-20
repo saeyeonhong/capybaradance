@@ -12,7 +12,5 @@ import SwiftUI
 struct CapybaraDanceWidgetBundle: WidgetBundle {
     var body: some Widget {
         CapybaraDanceWidget()
-        CapybaraDanceWidgetControl()
-        CapybaraDanceWidgetLiveActivity()
     }
 }

@@ -79,8 +79,12 @@ struct CapybaraDanceWidget: Widget {
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            CapybaraDanceWidgetEntryView(entry: entry)
-                .containerBackground(Color.white, for: .widget)
+            if #available(iOS 17.0, *) {
+                CapybaraDanceWidgetEntryView(entry: entry)
+                    .containerBackground(Color.white, for: .widget)
+            } else {
+                CapybaraDanceWidgetEntryView(entry: entry)
+            }
         }
         .configurationDisplayName("Capybara Dance")
         .description("Watch a capybara groove on your home screen!")
@@ -88,14 +92,3 @@ struct CapybaraDanceWidget: Widget {
     }
 }
 
-// MARK: - Preview
-
-#Preview(as: .systemSmall) {
-    CapybaraDanceWidget()
-} timeline: {
-    SimpleEntry(date: .now, frameIndex: 0)
-    SimpleEntry(date: .now, frameIndex: 1)
-    SimpleEntry(date: .now, frameIndex: 2)
-    SimpleEntry(date: .now, frameIndex: 3)
-    SimpleEntry(date: .now, frameIndex: 4)
-}
